@@ -1,11 +1,8 @@
-/* -*- Mode: Javascript; indent-tabs-mode:nil; js-indent-level: 2 -*- */
-/* vim: set ts=2 et sw=2 tw=80: */
-
 /*************************************************************
  *
  *  MathJax/localization/de/HTML-CSS.js
  *
- *  Copyright (c) 2013 The MathJax Consortium
+ *  Copyright (c) 2009-2016 The MathJax Consortium
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -20,33 +17,16 @@
  *  limitations under the License.
  *
  */
-
 MathJax.Localization.addTranslation("de","HTML-CSS",{
-  version: "2.2",
-  isLoaded: true,
-  strings: {
-
-    LoadWebFont:
-      "Lade Webfont %1",
-//    "Loading web-font %1",
-
-    CantLoadWebFont:
-      "Kann Webfont %1 nicht laden",
-//    "Can't load web font %1",
-
-    FirefoxCantLoadWebFont:
-      "Firefox kann Webfonts nicht von entferntem Computer laden",
-//    "Firefox can't load web fonts from a remote host",
-
-    CantFindFontUsing:
-      "Kein g\u00FCltiger Font fuer %1 verf\u00FCgbar",
-//    "Can't find a valid font using %1",
-
-    WebFontsNotAvailable:
-      "Webfonts nicht verf\u00FCgbar -- benutze Bildfont"
-//    "Web-Fonts not available -- using image fonts instead"
-
-  }
+        version: "2.7.2",
+        isLoaded: true,
+        strings: {
+          LoadWebFont: "Lade Webfont %1",
+          CantLoadWebFont: "Webschriftart %1 konnte nicht geladen werden",
+          FirefoxCantLoadWebFont: "Firefox kann keine Webschriften von einem entfernten Rechner laden",
+          CantFindFontUsing: "Es konnte keine g\u00FCltige Schriftart in %1 gefunden werden",
+          WebFontsNotAvailable: "Webschriften sind nicht verf\u00FCgbar. Verwende stattdessen Bildschriften."
+        }
 });
 
 MathJax.Ajax.loadComplete("[MathJax]/localization/de/HTML-CSS.js");

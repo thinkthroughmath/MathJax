@@ -18,7 +18,7 @@
  *
  *  ---------------------------------------------------------------------
  *  
- *  Copyright (c) 2010-2013 The MathJax Consortium
+ *  Copyright (c) 2010-2017 The MathJax Consortium
  * 
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@
  */
 
 MathJax.Extension.jsMath2jax = {
-  version: "2.2",
+  version: "2.7.2",
   
   config: {
     preview: "TeX"    // Set to "none" to prevent preview strings from being inserted
@@ -73,10 +73,13 @@ MathJax.Extension.jsMath2jax = {
   },
   
   createPreview: function (node) {
+    var previewClass = MathJax.Hub.config.preRemoveClass;
     var preview = this.config.preview;
+    if (preview === "none") return;
+    if ((node.previousSibling||{}).className === previewClass) return;
     if (preview === "TeX") {preview = [this.filterPreview(node.innerHTML)]}
     if (preview) {
-      preview = MathJax.HTML.Element("span",{className: MathJax.Hub.config.preRemoveClass},preview);
+      preview = MathJax.HTML.Element("span",{className:previewClass},preview);
       node.parentNode.insertBefore(preview,node);
     }
   },
@@ -93,5 +96,10 @@ MathJax.Extension.jsMath2jax = {
   
 };
 
+// We register the preprocessors with the following priorities:
+// - mml2jax.js: 5
+// - jsMath2jax.js: 8
+// - asciimath2jax.js, tex2jax.js: 10 (default)
+// See issues 18 and 484 and the other *2jax.js files.
 MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.jsMath2jax],8);
 MathJax.Ajax.loadComplete("[MathJax]/extensions/jsMath2jax.js");
